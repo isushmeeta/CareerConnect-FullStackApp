@@ -1,19 +1,35 @@
-import express from 'express';
-import jobroutes from "./routes/jobroutes.js";
-import {connectDB} from "./config/db.js";
-import dotenv from "dotenv";
+// server.js
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require("cors");
+
+const jobRoutes = require("./routes/jobRoutes");
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5001
- 
-connectDB();
-app.use("/api/jobs", jobroutes);
+const PORT = process.env.PORT || 5001;
 
+app.use(cors());
+app.use(express.json()); // To parse JSON request bodies
 
-http://localhost:5001/api/jobs/21
-app.listen(PORT, () => {
-  console.log(`Server started on PORT: ${PORT}`);
+// DB connection
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
+
+// Routes
+app.use("/api", jobRoutes); // Jobs route
+
+app.get("/", (req, res) => {
+  res.send("API Running");
 });
 
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});

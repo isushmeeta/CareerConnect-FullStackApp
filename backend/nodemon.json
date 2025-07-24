@@ -1,0 +1,8 @@
+{
+  "ignore": [
+    "README.md",
+    "frontend/*",
+    "*.log",
+    ".env"
+  ]
+}
