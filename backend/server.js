@@ -3,8 +3,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
-
-const jobRoutes = require("./routes/jobRoutes");
+const jobRoutes = require("./routes/jobroutes");
+const authRoutes = require("./routes/authRoutes");
+const resumeRoutes = require("./routes/resumeRoutes");
 
 dotenv.config();
 
@@ -24,7 +25,10 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // Routes
-app.use("/api", jobRoutes); // Jobs route
+app.use("/api/jobs", jobRoutes); // Jobs route
+app.use("/api/auth", authRoutes);
+app.use("/api/resume", resumeRoutes); 
+
 
 app.get("/", (req, res) => {
   res.send("API Running");

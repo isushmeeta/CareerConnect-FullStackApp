@@ -4,7 +4,7 @@ function PostJob() {
   const [formData, setFormData] = useState({
     title: "",
     company: "",
-    location: "",
+    city: "",
     description: "",
     salary: "",
   });
@@ -34,7 +34,7 @@ const handleSubmit = async (e) => {
       setFormData({
         title: "",
         company: "",
-        location: "",
+        city: "",
         description: "",
         salary: "",
       });
@@ -51,10 +51,10 @@ const handleSubmit = async (e) => {
 
   return (
     <div className="max-w-3xl mx-auto p-6 bg-white rounded shadow-md mt-8">
-      <h2 className="text-2xl font-bold mb-4 text-center">Post a Job</h2>
+      <h2 className="text-2xl font-bold mb-1 text-gray-900 dark:text-gray-100 text-center">Post a Job</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block font-medium mb-1">Job Title</label>
+          <label className="block font-medium mb-1 text-gray-900 dark:text-gray-100">Job Title</label>
           <input
             type="text"
             name="title"
@@ -67,7 +67,7 @@ const handleSubmit = async (e) => {
         </div>
 
         <div>
-          <label className="block font-medium mb-1">Company</label>
+          <label className="block font-medium mb-1 text-gray-900 dark:text-gray-100">Company</label>
           <input
             type="text"
             name="company"
@@ -80,11 +80,11 @@ const handleSubmit = async (e) => {
         </div>
 
         <div>
-          <label className="block font-medium mb-1">Location</label>
+          <label className="block font-medium mb-1 text-gray-900 dark:text-gray-100">City</label>
           <input
             type="text"
-            name="location"
-            value={formData.location}
+            name="city"
+            value={formData.city}
             onChange={handleChange}
             required
             className="w-full border px-4 py-2 rounded"
@@ -93,7 +93,7 @@ const handleSubmit = async (e) => {
         </div>
 
         <div>
-          <label className="block font-medium mb-1">Salary</label>
+          <label className="block font-medium mb-1 text-gray-900 dark:text-gray-100">Salary</label>
           <input
             type="text"
             name="salary"
@@ -105,7 +105,7 @@ const handleSubmit = async (e) => {
         </div>
 
         <div>
-          <label className="block font-medium mb-1">Job Description</label>
+          <label className="block font-medium mb-1 text-gray-900 dark:text-gray-100">Job Description</label>
           <textarea
             name="description"
             value={formData.description}

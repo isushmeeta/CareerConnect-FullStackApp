@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header({darkMode,setDarkMode}) {
   return (
     //background
-    <header className="bg-orange-500 border-b shadow-sm">
+    <header className={darkMode ? "bg-gray-800 text-gray-200" : "bg-orange-500 text-white"}>
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center space-x-8">
           {/* Text color white */}
@@ -21,6 +21,13 @@ export default function Header() {
           <a href="#" className="text-white font-semibold hover:text-orange-200">Sign in</a>
           <span className="hidden md:inline border-l h-4 border-white" />
           <Link to="/post-job" className="text-white hover:text-orange-200">Employers / Post Job</Link>
+          {/* Dark/Light toggle */}
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="ml-4 px-3 py-1 rounded bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:opacity-80 transition"
+          >
+            {darkMode ? "☀️ Light" : "🌙 Dark"}
+          </button>
         </div>
       </div>
     </header>
